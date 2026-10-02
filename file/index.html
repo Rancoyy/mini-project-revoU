@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Order & Budget Visualizer</title>
+  
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Total Balance Card -->
+    <div class="card balance-card">
+      <h2>Total Pesanan</h2>
+      <div class="balance-amount" id="totalBalance">Rp 0</div>
+    </div>
+
+    <!-- Pilihan Menu Makanan dengan Foto -->
+    <div class="card">
+      <h2>Pilih Menu Makanan</h2>
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Cari menu makanan..." />
+      </div>
+      <div class="menu-grid" id="menuGrid">
+        <!-- Item menu akan dirender secara dinamis -->
+      </div>
+    </div>
+
+
+    <!-- Visual Chart -->
+    <div class="card">
+      <h2>Distribusi Pengeluaran</h2>
+      <div class="chart-container">
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Transaction List -->
+    <div class="card">
+      <h2>Daftar Pesanan</h2>
+      <div class="transaction-list" id="transactionList">
+        <!-- Item transaksi akan dirender dinamis -->
+      </div>
+      <button class="btn-pesan-sekarang" onclick="pesanSekarang()">🛒 Pesan Sekarang</button>
+    </div>
+
+  </div>
+
+  <div id="toast" class="toast">⏳ Tunggu sebentar, pesanan sedang dibuat...</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
