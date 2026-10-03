@@ -75,11 +75,13 @@ function renderMenuCards(filter = '') {
     const card = document.createElement('div');
     card.classList.add('menu-card');
     const imgClass = item.name === 'Es Teh Manis' ? 'menu-img es-teh-manis-img' : 'menu-img';
+    const badgeClass = `menu-badge badge-${item.category.toLowerCase()}`;
     card.innerHTML = `
       <img class="${imgClass}" src="${item.image}" alt="${item.name}" loading="lazy" />
       <div class="menu-details">
         <span class="menu-name">${item.name}</span>
         <span class="menu-price">${formatRupiah(item.price)}</span>
+        <span class="${badgeClass}">${item.category}</span>
       </div>
     `;
     card.addEventListener('click', () => {
@@ -177,16 +179,6 @@ function updateUI() {
   renderTotal();
   renderChart();
 }
-
-window.handlePesan = function (e, name, price, category) {
-  e.stopPropagation(); // supaya tidak trigger klik card sekaligus
-  const toast = document.getElementById('toast');
-  toast.classList.add('show');
-  setTimeout(() => {
-    toast.classList.remove('show');
-    addTransaction(name, price, category);
-  }, 2000);
-};
 
 window.pesanSekarang = function () {
   if (transactions.length === 0) {
